@@ -245,6 +245,7 @@ class Synthesizer:
             if self.DEBUG:
                 print(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), ">synthesize mutatant end", num_i, flush=True)
 
+        os.remove(src_filename)
         return all_syn_files
 
 
@@ -268,6 +269,6 @@ if __name__=='__main__':
 
     syner = Synthesizer(args.DB, prob=100, DEBUG=False)
     try:
-        all_syn_files = syner.synthesizer(dst_dir, num_mutant=1)
+        all_syn_files = syner.synthesizer(dst_dir, num_mutant=10)
     except SynthesizerError:
         print("SynthesizerError (OK).")
